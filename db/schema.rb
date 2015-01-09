@@ -11,33 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108182353) do
+ActiveRecord::Schema.define(version: 20150108223652) do
 
-  create_table "albums", force: :cascade do |t|
+  create_table "albums", force: true do |t|
     t.integer  "band_id",    null: false
-    t.integer  "track_id",   null: false
     t.boolean  "live",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name",       null: false
   end
 
   add_index "albums", ["band_id"], name: "index_albums_on_band_id"
 
-  create_table "bands", force: :cascade do |t|
+  create_table "bands", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tracks", force: :cascade do |t|
+  create_table "tracks", force: true do |t|
     t.integer  "name",       null: false
     t.boolean  "bonus",      null: false
     t.text     "lyrics"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "album_id",   null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: true do |t|
     t.string   "email",           null: false
     t.string   "password_digest", null: false
     t.string   "session_token",   null: false

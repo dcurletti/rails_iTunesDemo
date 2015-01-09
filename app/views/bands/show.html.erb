@@ -1,0 +1,15 @@
+<h1><%= @band.name %></h1>
+<div class="panel panel-default" id="panel_table">
+  <table class="table">
+    <tr>
+      <th>Album<th>
+      <th>Live<th>
+    </tr>
+    <% @band.albums.each do |album| %>
+      <tr>
+        <td><a href="<%= url_for(album) %>"><%= album.name %></a><td>
+        <td><%= live?(album.live) %></td>
+      </tr>
+    <% end %>
+  </table class="table">
+</div>

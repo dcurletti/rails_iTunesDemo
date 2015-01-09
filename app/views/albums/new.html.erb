@@ -1,0 +1,35 @@
+<div id="name" class="col-xs-6 col-sm-4">
+</div>
+
+<div id="name" class="col-xs-6 col-sm-4">
+  <h1>Create Album</h1>
+  <form class="form-horizontal" role="form" action= "<%= albums_url %>" method="POST" class="navbar-form">
+    <div class="form-group">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      
+      <label for="album_name">Album name:</label>
+      <input class="form-control" type="text" name="album[name]" id="album_name" value="<%= @album.name %>">
+      <br>
+
+      <label for="album_live">Recording Type:</label>
+      <br>
+      <input type="radio" name="album[live]" id="album_live" value="Male" <%= "checked" if @album.live == true %>>Live
+      <br>
+      <input type="radio" name="album[live]" id="album_live" value="Female" <%= "checked" if @album.live == false %>>Studio
+      <br>
+      <br>
+
+      <label for="Band">Band name:</label>
+      <select name= "album[band_id]" class="form-control">
+        <% Band.all.each do |band| %>
+          <option value="<%= band.id %>" <%= select?(band.id) %>><%= band.name %></option>
+        <% end  %>
+      </select>
+      <br>
+
+      <input class="btn btn-primary btn-sm btn-block" type="submit" value="Create Album">
+    </div>
+  </form>
+
+</div>

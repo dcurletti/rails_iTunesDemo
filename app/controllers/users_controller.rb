@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate
+	before_action :authenticate, only: [:index]
 
 	def new
 		@user = User.new()
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			log_in_user!(@user)
-			redirect_to :root
+			redirect_to :root, notice: "#{@user.email} user created!"
 		else
 			flash.now[:error] = "Unable to create user"
 			render :new

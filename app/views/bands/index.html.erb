@@ -1,0 +1,15 @@
+<h1>Bands</h1>
+<div class="panel panel-default" id="panel_table">
+  <table class="table">
+    <tr>
+      <th>Band Name<th>
+      <th></th>
+    </tr>
+    <% @bands.each do |band| %>
+      <tr>
+        <td><a href="<%= url_for(band) %>"><%= band.name %></a><td>
+        <td><a href="<%= url_for(band) %>" data-method="delete" class="btn btn-primary" style="float:right">Delete Band</a></td>
+      </tr>
+    <% end %>
+  </table class="table">
+</div>
