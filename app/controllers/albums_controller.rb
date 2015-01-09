@@ -7,7 +7,6 @@ class AlbumsController < ApplicationController
 	end
 
 	def create
-		fail
 		@album = Album.new(album_params)
 		if @album.save
 			redirect_to album_url(@album), notice: "Album #{@album.name} successfully created"
@@ -16,8 +15,12 @@ class AlbumsController < ApplicationController
 		end
 	end
 
+	def show
+		@album = Album.find(params[:id])
+	end
+
 	private
 	def album_params
-		params.require(:albums).permit(:band_id, :live, :name)
+		params.require(:album).permit(:band_id, :live, :name)
 	end
 end

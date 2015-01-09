@@ -1,0 +1,35 @@
+<div id="name" class="col-xs-6 col-sm-4">
+</div>
+
+<div id="name" class="col-xs-6 col-sm-4">
+  <h1>Create Track</h1>
+  <form class="form-horizontal" role="form" action= "<%= tracks_url %>" method="POST" class="navbar-form">
+    <div class="form-group">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      
+      <label for="track_name">Track name:</label>
+      <input class="form-control" type="text" name="track[name]" id="track_name" value="<%= @track.name %>">
+      <br>
+
+      <label for="track_bonus">Bonus Track?</label>
+      <br>
+      <input type="radio" name="track[bonus]" id="track_bonus" value="true" <%= "checked" if @track.bonus == true %>>Bonus
+      <br>
+      <input type="radio" name="track[bonus]" id="track_bonus" value="false" <%= "checked" if @track.bonus == false %>>Regular
+      <br>
+      <br>
+
+      <label for="Track">Album name:</label>
+      <select name= "track[album_id]" class="form-control">
+        <% Album.all.each do |album| %>
+          <option value="<%= album.id %>" <%= select?(album.id) %>><%= album.name %></option>
+        <% end  %>
+      </select>
+      <br>
+
+      <input class="btn btn-primary btn-sm btn-block" type="submit" value="Create Track">
+    </div>
+  </form>
+
+</div>

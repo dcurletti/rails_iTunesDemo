@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108223652) do
+ActiveRecord::Schema.define(version: 20150109014119) do
 
   create_table "albums", force: true do |t|
     t.integer  "band_id",    null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150108223652) do
   end
 
   create_table "tracks", force: true do |t|
-    t.integer  "name",       null: false
+    t.string   "name",       null: false
     t.boolean  "bonus",      null: false
     t.text     "lyrics"
     t.datetime "created_at", null: false

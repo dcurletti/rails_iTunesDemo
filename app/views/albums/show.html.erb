@@ -1,0 +1,15 @@
+<h1><%= @album.name %></h1>
+<div class="panel panel-default" id="panel_table">
+  <table class="table">
+    <tr>
+      <th>Track Name<th>
+      <th>Bonus Track<th>
+    </tr>
+    <% @album.tracks.each do |track| %>
+      <tr>
+        <td><a href="<%= track_url(track) %>"><%= track.name %></a><td>
+        <td><%= bonus?(track.bonus) %></td>
+      </tr>
+    <% end %>
+  </table class="table">
+</div>

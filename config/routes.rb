@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :bands do
   	resources :albums, only: [:new]
   end
-  resources :albums, except: [:new]
-  resources :tracks
+  resources :albums, except: [:new] do
+  	resources :tracks, only: [:new]
+  end
+  resources :tracks, except: [:new]
 
   root to: "users#index"
 end
